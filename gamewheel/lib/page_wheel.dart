@@ -15,41 +15,38 @@ class _PageWheelState extends State<PageWheel> {
   StreamController<int> selected = StreamController<int>();
   List<String> _items = [];
   final items = <String>[
-    'Grogu',
-    'Mace Windu',
-    'Obi-Wan Kenobi',
-    'Han Solo',
-    'Luke Skywalker',
-    'Darth Vader',
-    'Yoda',
-    'Ahsoka Tano',
+    '1',
+    '2',
+    '2',
   ];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _items = widget.items ?? items;
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _items = widget.items ?? items;
+  // }
 
-  @override
-  void didUpdateWidget(covariant PageWheel oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-    _items = widget.items ?? items;
-  }
+  // @override
+  // void didUpdateWidget(covariant PageWheel oldWidget) {
+  //   // TODO: implement didUpdateWidget
+  //   super.didUpdateWidget(oldWidget);
+  //   _items = widget.items ?? items;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    _items = widget.items ?? items;
     return _geWheel(_items);
   }
 
   _geWheel(List<String> items) {
+    final dataRandom = Fortune.randomInt(0, items.length);
     return GestureDetector(
       onTap: () {
         setState(() {
           selected.add(
-            Fortune.randomInt(0, items.length),
+            3,
           );
         });
       },
@@ -61,8 +58,11 @@ class _PageWheelState extends State<PageWheel> {
               child: FortuneWheel(
                 selected: selected.stream,
                 items: [
-                  for (var it in items) FortuneItem(child: Text(it)),
+                  for (var it in _items) FortuneItem(child: Text(it)),
                 ],
+                onAnimationEnd: () {
+                  print("4endd===>${_items[dataRandom]}==$dataRandom");
+                },
               ),
             ),
           ],

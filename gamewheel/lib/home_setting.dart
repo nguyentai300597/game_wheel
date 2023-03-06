@@ -20,7 +20,6 @@ class _HomeSettingState extends State<HomeSetting> {
 
   @override
   void didUpdateWidget(covariant HomeSetting oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     data = widget.items ?? [];
   }
@@ -36,18 +35,6 @@ class _HomeSettingState extends State<HomeSetting> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // Container(
-                  //   child: const TextField(
-                  //     decoration: InputDecoration(
-
-                  //       hintText: "2342",
-                  //       border: InputBorder.none,
-                  //       // enabledBorder: OutlineInputBorder(
-                  //       //   borderSide: BorderSide(width: 1, color: Colors.grey),
-                  //       // ),
-                  //     ),
-                  //   ),
-                  // )
                   for (int i = 0; i < data.length; i++)
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
@@ -58,14 +45,35 @@ class _HomeSettingState extends State<HomeSetting> {
                           labelText: data[i],
                         ),
                       ),
-                    )
+                    ),
+                  InkWell(
+                    onTap: () {
+                      data.add("");
+                      setState(() {});
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        width: 1,
+                        color: Colors.grey,
+                      )),
+                      padding: EdgeInsets.all(15),
+                      child: Icon(Icons.add),
+                    ),
+                  )
                 ],
               ),
             ),
           ),
           Container(
             width: double.infinity,
-            child: ElevatedButton(onPressed: () {}, child: Text("DONE")),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("DONE")),
           )
         ],
       ),

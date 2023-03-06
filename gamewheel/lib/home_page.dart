@@ -19,6 +19,11 @@ class _HomePageState extends State<HomePage> {
     'Grogu',
     'Mace Windu',
     'Obi-Wan Kenobi',
+    '2',
+    '4',
+    '5',
+    '6',
+    '7',
   ];
   @override
   Widget build(BuildContext context) {
