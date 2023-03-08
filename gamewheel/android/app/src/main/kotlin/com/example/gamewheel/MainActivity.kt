@@ -1,4 +1,4 @@
-package com.example.gamewheel
+package com.game.gamewheel
 
 import io.flutter.embedding.android.FlutterActivity
 
